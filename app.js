@@ -7,6 +7,11 @@
     res.sendFile(__dirname + '/index.html');
   });
 
+  io.configure(function () {
+      io.set("transports", ["xhr-polling"]);
+      io.set("polling duration", 10);
+  });
+
   io.sockets.on('connection', function(socket){
     //TODO - Save messages to db
     socket.on('chat message', function(msg){
@@ -14,7 +19,7 @@
       });
     //Find out how to send message to specific members
       socket.on('chat message', function(msg){
-        io.emit('chat message', msg);
+        io.sockets.emit('chat message', msg);
       });
   });
 
