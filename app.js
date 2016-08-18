@@ -7,7 +7,7 @@
     res.sendFile(__dirname + '/index.html');
   });
 
-  io.on('connection', function(socket){
+  io.sockets.on('connection', function(socket){
     //TODO - Save messages to db
     socket.on('chat message', function(msg){
         console.log('message: ' + msg);
