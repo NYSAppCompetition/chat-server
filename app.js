@@ -1,7 +1,7 @@
 (function(){
   var app = require('express')(),
-      http = require('http').Server(app),
-      io = require('socket.io')(http);
+      server = require('http').Server(app),
+      io = require('socket.io').listen(server);
 
   app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
@@ -18,6 +18,6 @@
       });
   });
 
-  module.exports = http;
+  module.exports = server;
 
 })();

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-var http = require('../app');
+var server = require('../app');
 var port = process.env.PORT || 3000;
 
-http.listen(port, function(){
+server.listen(port, function(){
   console.log('Chat Server listening on port ' + port);
 });
